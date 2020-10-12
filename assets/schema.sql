@@ -15,7 +15,16 @@ CREATE TABLE roles (
     salary VARCHAR(120) NOT NULL,
     dept_id INT NOT NUll,
     PRIMARY KEY (roles_id),
-    FOREIGN KEY (dept_id),
-    REFERENCES departments(dept_id)
+    FOREIGN KEY (dept_id)
+        REFERENCES departments(dept_id)
 );
 
+CREATE TABLE employee (
+    employee_id INT NOT NULL Auto_INCREMENT,
+    first_name VARCHAR(120) NOT NULL,
+    last_name VARCHAR(120) NOT NUll,
+    roles_id INT NOT NUll,
+    PRIMARY key (employee_id),
+    FOREIGN key (roles_id)
+        REFERENCES roles(roles_id)
+);
