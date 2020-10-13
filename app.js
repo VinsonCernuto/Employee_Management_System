@@ -71,3 +71,14 @@ function runProgram() {
         }   
     });
 }
+
+function addDepartments() {
+    inquirer.prompt(questions[1]).then(function(res){
+        let name = res.departmentName;
+        let query = "INSERT INTO department SET ?";
+        connection.query(query, { dept_name },function(err){
+            if (err) throw err;
+            runProgram();
+        });
+    });
+}
