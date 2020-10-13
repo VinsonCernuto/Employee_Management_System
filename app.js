@@ -43,3 +43,31 @@ const questions = [
         message: "What is the depatment's name?"
     }
 ];
+
+// Functions for application
+function runProgram() {
+    inquirer.prompt(questions[0]).then(function(res){
+        switch(res.startingQuestion){
+            case "Add departments":
+                addDepartments();
+                break;
+            case "Add roles":
+                addRoles();
+                break;
+            case "View departments":
+                viewDepartment();
+                break;
+            case "View roles":
+                viewRoles();
+                break;
+            case "View employees":
+                viewEmployees();
+                break;
+            case "Update employee roles":
+                updateEmployeeRoles();
+                break;
+            case "Close program":
+                connection.end();
+        }   
+    });
+}
