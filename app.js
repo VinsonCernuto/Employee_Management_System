@@ -82,3 +82,15 @@ function addDepartments() {
         });
     });
 }
+
+function viewDepartment() {
+    let query = "SELECT * from departments";
+    connection.query(query, function(err, res){
+        if (err) throw err;
+        console.log("\nHere are the depatments\n\n================================\n");
+        console.table(res);
+        console.log("================================\n");
+        runProgram();
+    });
+}
+
