@@ -156,3 +156,68 @@ function viewEmployees() {
         runProgram();
     });
 }
+
+function updateEmployeeRoles() {
+    let query = "SELECT * from roles";
+    connection.query(query, function(err, rolesTable){
+        if (err) throw err;
+        let allRoles = [];
+        rolesTable.forEach(role => {
+            allRoles.push(role.title);
+        });
+        const updateQuestions = [
+        //questions for add roles
+            {
+                name: 'whichRole',
+                type: 'list',
+                message: 'Which role do you want to update?',
+                choices: 'allRoles'
+            },
+            { 
+                name: 'whichUpdate',
+                type: 'list',
+                message: 'What would you like to update?',
+                choices: ['Salary', 'Title']
+            }   
+        ];
+        inquirer.prompt(updaeQuestions).then(function(role){
+            let roleID;
+            for (let i = 0; i < allRoles.length; i++) {
+                if (role.whichRole === rolesTable[i].title){
+                    roleID = rolesTable[i].roles_id;
+                }
+            }
+
+            if (role.whichUpdate === 'salary') {
+                inquirer.prompt({
+                    name: 'newSalary',
+                    type: 'input',
+                    message: 'Enter new salary'
+                }).then(function(response) {
+                    let newSalary = parseInt(newSalary);
+
+                    let query = "UPDATE Roles SET ? WHERE roles_id = ${roleID}";
+                    connection.query(query, { salary: newSalary }, function(err){
+                        if (err) throw err;
+                        runProgram();
+                    });
+                });
+            } else {
+                inquirer.prompt({
+                    name: 'newTitle',
+                    type: 'input',
+                    message: 'Enter new title'
+                }).then(function(response) {
+                    let newTitle = response.newTitle;
+                    let query = 'UPDATE Roles SET ? WHERE roles_id = ${roleID}';
+                    connection.query(query, { title: newTitle }, function(err){
+                        if (err) throw err;
+                        runProgram();
+                    });
+                });
+            }
+        });
+    });
+}
+
+runProgram();
