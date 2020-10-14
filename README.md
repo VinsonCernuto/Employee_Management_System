@@ -1,7 +1,7 @@
 
   <h1 align="center">Employee Managment System</h1>
     
-  (https://img.shields.io/badge/license-MIT License-blue.svg)<br />
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)<br />
   
   ## Description
    This is terminal based application that would allow a bissness to manage current employees, add new or remove old employees, change postion or salary.
@@ -23,8 +23,7 @@
   <img src="Employee_Management_System\assets\media\functionality.gif">
   
   ## License
-  (https://img.shields.io/badge/license-MIT License-blue.svg)
-  <br />
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)<br />
   This application is covered by the MIT Licenselicense. 
   
   ## Contributing
