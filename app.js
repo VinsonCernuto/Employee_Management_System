@@ -94,3 +94,54 @@ function viewDepartment() {
     });
 }
 
+function addRoles() {
+    let query = "SELECT * from departments";
+    connection.query(query, function(err, departmentTable) {
+        if (err) throw err;
+        let allDepartments = [];
+
+        departmentTable.forEach(department => {
+            allDepartments.push(department.dept_name);
+        });
+
+        const rolesQuestion = [
+            { 
+                name: "selectDpt",
+                type: "list",
+                message: "Which department would you like to add the role to?",
+                choices: allDepartments
+            },
+            {
+                name: "roleTitle",
+                type: "input",
+                message: "Whats the role title"
+            },
+            {
+                name: "rolePay",
+                type: "input",
+                message: "What does the position pay?"
+            }
+        ];
+
+        inquirer.prompt(rolesQuestion).then(function(fullResult){
+            let dept_id = "";
+            let title = fullResult.roleTitle;
+            let salary = fullResult.roleSalary;
+
+            for (let i = 0; i < allDepartments.length; i++) {
+                if (fullResult.whichDpt === departmentTable[i].dept_name) {
+                    dept_id = departmentTable[i].dept_id;
+                }
+            }
+
+            connection.query(
+                "INSERT INTO roles SET ?",
+                { title: title, salary: salary, dept_id: deptid},
+                function(err) {
+                    if (err) throw err;
+                    runProgram();
+                }
+            ); 
+        });
+    });
+}
