@@ -145,3 +145,14 @@ function addRoles() {
         });
     });
 }
+
+function viewEmployees() {
+    let query = "SELECT employee.employee_id, employee.first_name, employee.last_name, roles.title, roles.salary, departments.dept_name FROM employee INNER JOIN roles ON (employee.roles_id = roles.roles_id) INNER JOIN departments ON (roles.dept_id = departments.dept_id)";
+    connection.query(query, function(err, res){
+        if (err) throw err;
+        console.log("\nHere are all employees\n\n==============\n");
+        console.table(res);
+        console.log("\n==============\n");
+        runProgram();
+    });
+}
