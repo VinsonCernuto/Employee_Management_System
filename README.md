@@ -4,7 +4,7 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)<br />
   
   ## Description
-   This is terminal based application that would allow a bissness to manage current employees, add new or remove old employees, change postion or salary.
+   This is terminal based application that would allow a business to manage current employees, add new or remove old employees, change position or salary.
   
    ## Table of Contents
   - [Description](#description)
@@ -15,7 +15,7 @@
   - [Questions](#questions)
   
   ## Installation
-  Clone this current repository run npm i in terminal. Then add the data base file to data base(I used Dbever) then run node app.js in terminal and follow prompts like shown in the GIF below.  
+  Clone this current repository run npm i in terminal. Then add the data base file to data base(I used Dbeaver) then run node app.js in terminal and follow prompts like shown in the GIF below..  
   
   ## Usage
   <img src="Employee_Management_System\assets\media\schema.png">
